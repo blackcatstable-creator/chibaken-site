@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ページが見つかりません｜千葉研</title>
+<meta name="description" content="お探しのページは見つかりませんでした。">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://go-chibaken.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+  html { color-scheme: light dark; }
+  :root {
+    --ground: #FAFAF8;
+    --ink: #15161A;
+    --muted: #5E6270;
+    --accent: #2A4D7C;
+    --accent-ink: #2A4D7C;
+    --line: #DEDFE2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #101114;
+      --ink: #E9EAEE;
+      --muted: #A0A5B1;
+      --accent: #86AEDF;
+      --accent-ink: #A9C6EC;
+      --line: #292C33;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
+    line-height: 1.85;
+    text-align: center;
+    padding: 24px;
+  }
+  .box { max-width: 26em; }
+  .code {
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: clamp(40px, 12vw, 64px);
+    letter-spacing: .1em;
+    margin: 0 0 8px;
+    color: var(--accent-ink);
+  }
+  h1 {
+    font-family: "Shippori Mincho", serif;
+    font-size: 20px;
+    letter-spacing: .04em;
+    margin: 0 0 14px;
+  }
+  p { color: var(--muted); margin: 0 0 26px; }
+  a.btn {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 12px 26px;
+    border-radius: 3px;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--ground);
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    <p class="code">404</p>
+    <h1>ページが見つかりません</h1>
+    <p>お探しのページは移動または削除された可能性があります。</p>
+    <a class="btn" href="/">トップページへ戻る</a>
+  </div>
+</body>
+</html>
