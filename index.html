@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>千葉研</title>
+<meta name="description" content="千葉県の囲碁研究会「千葉研」の案内。活動内容、開催情報、参加方法。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+  html { color-scheme: light dark; }
+  :root {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+
+  :root {
+    --ground: #FAFAF8;
+    --surface: #FFFFFF;
+    --ink: #15161A;
+    --muted: #5E6270;
+    --faint: #8B8F9C;
+    --accent: #2A4D7C;
+    --accent-ink: #2A4D7C;
+    --accent-soft: #E6ECF4;
+    --line: #DEDFE2;
+    --line-strong: #C4C6CC;
+    --grid: rgba(42, 77, 124, 0.13);
+    --shadow: 0 1px 2px rgba(20, 22, 30, .05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #101114;
+      --surface: #17191E;
+      --ink: #E9EAEE;
+      --muted: #A0A5B1;
+      --faint: #767C89;
+      --accent: #86AEDF;
+      --accent-ink: #A9C6EC;
+      --accent-soft: #1B2635;
+      --line: #292C33;
+      --line-strong: #3A3E47;
+      --grid: rgba(134, 174, 223, 0.16);
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #101114;
+    --surface: #17191E;
+    --ink: #E9EAEE;
+    --muted: #A0A5B1;
+    --faint: #767C89;
+    --accent: #86AEDF;
+    --accent-ink: #A9C6EC;
+    --accent-soft: #1B2635;
+    --line: #292C33;
+    --line-strong: #3A3E47;
+    --grid: rgba(134, 174, 223, 0.16);
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-weight: 700;
+    line-height: 1.45;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  a { color: var(--accent-ink); }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding-inline: 20px;
+  }
+
+  /* ---- header ---- */
+  .site-head {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: color-mix(in srgb, var(--ground) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-head .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-block: 12px;
+  }
+  .mark {
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: .14em;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+    font-size: 13.5px;
+  }
+  .nav a {
+    color: var(--muted);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav a:hover { color: var(--accent-ink); }
+  @media (max-width: 620px) { .nav { display: none; } }
+
+  /* ---- hero ---- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(to right, var(--grid) 0 1px, transparent 1px 42px),
+      repeating-linear-gradient(to bottom, var(--grid) 0 1px, transparent 1px 42px);
+    background-position: center top;
+    -webkit-mask-image: radial-gradient(120% 90% at 78% 28%, #000 0%, transparent 72%);
+    mask-image: radial-gradient(120% 90% at 78% 28%, #000 0%, transparent 72%);
+    pointer-events: none;
+  }
+  .hero .wrap {
+    position: relative;
+    padding-block: 72px 60px;
+  }
+  .eyebrow {
+    font-size: 12.5px;
+    letter-spacing: .22em;
+    color: var(--accent-ink);
+    margin: 0 0 22px;
+  }
+  .hero h1 {
+    font-size: clamp(46px, 13vw, 76px);
+    letter-spacing: .1em;
+    margin-bottom: 18px;
+  }
+  .tagline {
+    font-family: "Shippori Mincho", serif;
+    font-size: clamp(17px, 4.6vw, 21px);
+    color: var(--ink);
+    margin: 0 0 14px;
+  }
+  .hero .lead {
+    max-width: 30em;
+    color: var(--muted);
+    margin: 0 0 30px;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 32px;
+    padding: 0;
+    list-style: none;
+  }
+  .chips li {
+    font-size: 13px;
+    line-height: 1.6;
+    padding: 5px 13px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--muted);
+    background: var(--surface);
+  }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 12px 26px;
+    border-radius: 3px;
+    border: 1px solid var(--accent);
+    transition: opacity .15s ease;
+  }
+  .btn:hover { opacity: .82; }
+  .btn-primary { background: var(--accent); color: var(--ground); }
+  .btn-ghost { color: var(--accent-ink); background: transparent; }
+
+  /* ---- sections ---- */
+  section { border-bottom: 1px solid var(--line); }
+  section .wrap { padding-block: 56px; }
+  .sec-label {
+    font-size: 12px;
+    letter-spacing: .2em;
+    color: var(--faint);
+    margin: 0 0 10px;
+  }
+  h2 {
+    font-size: clamp(23px, 5.6vw, 28px);
+    letter-spacing: .04em;
+    margin-bottom: 26px;
+  }
+  p { margin: 0 0 1.1em; max-width: 34em; }
+  p:last-child { margin-bottom: 0; }
+
+  /* 活動内容 */
+  .activities { margin: 0; padding: 0; list-style: none; }
+  .activities > li { padding-block: 22px; border-top: 1px solid var(--line); }
+  .activities > li:first-child { border-top: none; padding-top: 0; }
+  .activities h3 {
+    font-size: 18px;
+    letter-spacing: .06em;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .stone {
+    flex: none;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+  .activities p { color: var(--muted); margin: 0; }
+  .note {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--faint);
+  }
+
+  /* 開催情報 */
+  .facts { margin: 0; }
+  .facts > div {
+    display: grid;
+    grid-template-columns: 116px 1fr;
+    gap: 4px 20px;
+    padding-block: 15px;
+    border-top: 1px solid var(--line);
+  }
+  .facts > div:first-child { border-top: none; padding-top: 0; }
+  .facts dt {
+    font-size: 13.5px;
+    color: var(--faint);
+    letter-spacing: .08em;
+    padding-top: 2px;
+  }
+  .facts dd { margin: 0; }
+  .facts dd .sub { display: block; font-size: 13.5px; color: var(--muted); }
+  @media (max-width: 520px) {
+    .facts > div { grid-template-columns: 1fr; gap: 2px; }
+  }
+
+  /* 開催予定 */
+  .sched { margin: 0; padding: 0; list-style: none; }
+  .sched li {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: 4px 20px;
+    padding-block: 16px;
+    border-top: 1px solid var(--line);
+  }
+  .sched li:first-child { border-top: none; padding-top: 0; }
+  .sched .date {
+    font-variant-numeric: tabular-nums;
+    font-family: "Shippori Mincho", serif;
+    font-size: 17px;
+    letter-spacing: .03em;
+    white-space: nowrap;
+  }
+  .sched .date .dow { font-size: 13px; color: var(--muted); margin-left: 4px; }
+  .sched .where { color: var(--muted); font-size: 15px; }
+  .sched .where .time { display: block; font-size: 13.5px; color: var(--faint); }
+  .sched .date.tbd { color: var(--faint); }
+  .status {
+    justify-self: end;
+    flex: none;
+    font-size: 12.5px;
+    line-height: 1.5;
+    padding: 3px 11px;
+    border-radius: 999px;
+    white-space: nowrap;
+    border: 1px solid var(--line-strong);
+    color: var(--muted);
+  }
+  .status.open { border-color: var(--accent); color: var(--accent-ink); background: var(--accent-soft); }
+  .status.closed { color: var(--faint); }
+  @media (max-width: 520px) {
+    .sched li { grid-template-columns: 1fr auto; }
+    .sched .where { grid-column: 1 / -1; }
+  }
+  .sched-foot { margin-top: 24px; font-size: 13.5px; color: var(--faint); }
+
+  /* 参加について */
+  .fits { margin: 0 0 28px; padding: 0; list-style: none; max-width: 34em; }
+  .fits li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 6px;
+    color: var(--muted);
+  }
+  .fits li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: .78em;
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+  }
+  .callout {
+    background: var(--accent-soft);
+    border-left: 2px solid var(--accent);
+    padding: 20px 22px;
+    border-radius: 0 3px 3px 0;
+  }
+  .callout h3 { font-size: 16.5px; letter-spacing: .06em; margin-bottom: 8px; }
+  .callout p { color: var(--muted); font-size: 15px; }
+
+  /* Q&A */
+  .qa { margin: 0; padding: 0; list-style: none; }
+  .qa li { padding-block: 20px; border-top: 1px solid var(--line); }
+  .qa li:first-child { border-top: none; padding-top: 0; }
+  .qa .q {
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 16.5px;
+    margin: 0 0 6px;
+    max-width: 34em;
+  }
+  .qa .a { color: var(--muted); margin: 0; font-size: 15px; }
+
+  /* contact */
+  #contact .wrap { padding-block: 64px; }
+  .contact-note { font-size: 13px; color: var(--faint); margin-top: 14px; }
+
+  footer .wrap {
+    padding-block: 34px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--faint);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="mark" href="#top">千葉研</a>
+    <nav class="nav" aria-label="ページ内">
+      <a href="#about">会について</a>
+      <a href="#activity">活動</a>
+      <a href="#info">開催情報</a>
+      <a href="#schedule">開催予定</a>
+      <a href="#join">参加について</a>
+      <a href="#qa">Q&amp;A</a>
+      <a href="#contact">お問い合わせ</a>
+      <a href="report.html">活動報告</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="eyebrow">千葉県の囲碁交流会</p>
+      <h1>千葉研</h1>
+      <p class="tagline">千葉の囲碁を、もっと面白く。</p>
+      <p class="lead">県代表クラスの高段者から低段者まで、千葉県内の碁会所に集まって打ち、検討し、棋力向上を目指す会です。</p>
+      <ul class="chips">
+        <li>1〜2か月に1度</li>
+        <li>毎回10〜20人</li>
+        <li>参加費は席料のみ</li>
+        <li>事前申込制</li>
+      </ul>
+      <div class="actions">
+        <a class="btn btn-primary" href="#contact">参加を問い合わせる</a>
+        <a class="btn btn-ghost" href="#schedule">開催予定を見る</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <p class="sec-label">ABOUT</p>
+      <h2>千葉の囲碁を盛り上げる会です</h2>
+      <p>千葉研は、千葉の囲碁をもっと面白くしたいという一点で集まっている研究会です。所属も棋力も問いません。打ちたい人が集まって、対局と検討に時間を使います。</p>
+    </div>
+  </section>
+
+  <section id="activity">
+    <div class="wrap">
+      <p class="sec-label">ACTIVITY</p>
+      <h2>活動内容</h2>
+      <ul class="activities">
+        <li>
+          <h3><span class="stone" aria-hidden="true"></span>対局</h3>
+          <p>参加者どうしで自由に打ちます。棋力差があるときは置き碁で手合を組みますので、相手が見つからないということはありません。</p>
+        </li>
+        <li>
+          <h3><span class="stone" aria-hidden="true"></span>検討</h3>
+          <p>終局後はその場で並べ直します。打った二人だけでなく、他の参加者も加わって意見交換をします。</p>
+        </li>
+        <li>
+          <h3><span class="stone" aria-hidden="true"></span>プロ棋士の指導</h3>
+          <p>ときどきプロの先生にお越しいただき、指導碁などをお願いする場合もあります。</p>
+          <span class="note">※ 開催回は事前にご案内します。</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="info">
+    <div class="wrap">
+      <p class="sec-label">INFORMATION</p>
+      <h2>開催情報</h2>
+      <dl class="facts">
+        <div>
+          <dt>開催頻度</dt>
+          <dd>1〜2か月に1度</dd>
+        </div>
+        <div>
+          <dt>会場</dt>
+          <dd>千葉県内の碁会所
+            <span class="sub">現在は市川駅の「天元」さんをお借りすることが多いです。開催ごとに会場が変わる場合があります。</span>
+          </dd>
+        </div>
+        <div>
+          <dt>参加費</dt>
+          <dd>会場の席料のみ
+            <span class="sub">会としての参加費・会費はいただいていません。席料は各自で会場にお支払いください。</span>
+          </dd>
+        </div>
+        <div>
+          <dt>参加人数</dt>
+          <dd>毎回10〜20人程度</dd>
+        </div>
+        <div>
+          <dt>対象</dt>
+          <dd>低段者から県代表クラスまで
+            <span class="sub">千葉県内で開催していますが、県外にお住まいの方も歓迎しています。</span>
+          </dd>
+        </div>
+        <div>
+          <dt>参加方法</dt>
+          <dd>事前申込制
+            <span class="sub">お問い合わせフォームからお申し込みください。</span>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="schedule">
+    <div class="wrap">
+      <p class="sec-label">SCHEDULE</p>
+      <h2>今後の開催予定</h2>
+      <ul class="sched">
+        <li>
+          <span class="date">2026年11月8日<span class="dow">（土）</span></span>
+          <span class="where">市川駅「天元」</span>
+          <span class="status open">受付中</span>
+        </li>
+        <li>
+          <span class="date tbd">次回</span>
+          <span class="where">日程調整中</span>
+          <span class="status">準備中</span>
+        </li>
+      </ul>
+      <p class="sched-foot">日程が決まり次第、随時このページを更新します。</p>
+    </div>
+  </section>
+
+  <section id="join">
+    <div class="wrap">
+      <p class="sec-label">JOIN</p>
+      <h2>参加について</h2>
+      <ul class="fits">
+        <li>千葉で打つ相手を探している方</li>
+        <li>棋力向上を目指したい方（棋力不問）</li>
+        <li>千葉県外にお住まいで、千葉で打ってみたい方</li>
+        <li>しばらく碁から離れていて、また打ち始めたい方</li>
+      </ul>
+      <div class="callout">
+        <h3>はじめての方へ</h3>
+        <p>参加は事前申込制です。初参加の方は、まずお問い合わせフォームからご連絡ください。直近の開催日と会場をお伝えします。「参加できる棋力か分からない」という段階のご相談でも構いません。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="qa">
+    <div class="wrap">
+      <p class="sec-label">Q &amp; A</p>
+      <h2>よくあるご質問</h2>
+      <ul class="qa">
+        <li>
+          <p class="q">級位者ですが参加できますか。</p>
+          <p class="a">棋力などを教えていただいたうえでご相談させていただき、一緒に参加できるかを決めさせていただきますので、まずは一度ご相談ください。</p>
+        </li>
+        <li>
+          <p class="q">費用はいくらかかりますか。</p>
+          <p class="a">会場となる碁会所の席料のみです。会としての参加費はいただいていません。</p>
+        </li>
+        <li>
+          <p class="q">千葉県外に住んでいますが参加できますか。</p>
+          <p class="a">歓迎しています。千葉県内で開催しているというだけで、お住まいによる制限はありません。会場までお越しいただける方であればどなたでもご参加いただけます。</p>
+        </li>
+        <li>
+          <p class="q">当日、会場に行けば参加できますか。</p>
+          <p class="a">参加は事前申込制です。お問い合わせフォームからあらかじめお申し込みください。</p>
+        </li>
+        <li>
+          <p class="q">一人で申し込んでも大丈夫でしょうか。</p>
+          <p class="a">ほとんどの方が一人で参加されています。当日は運営メンバーが対局の組み合わせをお手伝いします。</p>
+        </li>
+        <li>
+          <p class="q">毎回参加しなければいけませんか。</p>
+          <p class="a">いいえ。来られるときだけのご参加で構いません。</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <p class="sec-label">CONTACT</p>
+      <h2>お問い合わせ</h2>
+      <p>参加のお申し込み、見学のご希望、開催日のご確認など、内容は問いません。お気軽にフォームからお送りください。折り返しご連絡します。</p>
+      <div class="actions" style="margin-top: 26px;">
+        <a class="btn btn-primary" href="#contact">お問い合わせフォームへ</a>
+      </div>
+      <p class="contact-note">※ フォームのURLが決まり次第、このボタンにリンクします。</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>千葉研 — 千葉県内の碁会所で活動中</span>
+    <span><a href="report.html">活動報告</a></span>
+    <span>&copy; 2026 千葉研</span>
+  </div>
+</footer>
+</body>
+</html>
